@@ -15,13 +15,14 @@ class Grap
         $this->permissions = $permissions;
     }
 
-    public function getToken() 
+    public function getToken()
     {
-        $this->token->getToken(implode(" ", array_map([$this, 'createScope'], $this->permissions)));
-    }
-
-    private function createScope($permissions)
-    {
-        return $this->scope . $permissions;
+        $scope = $this->scope;
+        return $this->token->getToken(implode(" ", array_map(
+            function ($item) use ($scope) {
+                return Scope::createScope($scope, $item);
+            },
+            $this->permissions
+        )));
     }
 }
