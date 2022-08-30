@@ -19,7 +19,7 @@ class Token
         $this->grant_type = $grant_type;
     }
 
-    public function getToken($scope)
+    public function get($scope = ['.default'])
     {
         $client = new Client();
 
@@ -27,7 +27,7 @@ class Token
             'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
             'body' => array_merge(
                 [
-                    'scope' => $scope,
+                    'scope' => implode(" ", $scope),
                     'client_id' => $this->client_id,
                     'client_secret' => $this->client_secret
                 ],
