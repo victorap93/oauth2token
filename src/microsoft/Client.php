@@ -2,9 +2,7 @@
 
 namespace victorap93\OAuth2Token\Microsoft;
 
-use \GuzzleHttp\Client;
-
-class Token
+class Client
 {
     private $tenant_id;
     private $client_id;
@@ -19,9 +17,9 @@ class Token
         $this->grant_type = $grant_type;
     }
 
-    public function get($scope = ['.default'])
+    public function getToken($scope = ['.default'])
     {
-        $client = new Client();
+        $client = new \GuzzleHttp\Client();
 
         $request = $client->post("https://login.microsoftonline.com/" . $this->tenant_id . "/oauth2/v2.0/token", [
             'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],

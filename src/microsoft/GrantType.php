@@ -12,4 +12,12 @@ class GrantType
             'password' => $password
         ];
     }
+
+    public static function refresh_token($refresh_token)
+    {
+        return [
+            'grant_type' => 'refresh_token',
+            'refresh_token' => $refresh_token
+        ];
+    }
 }
