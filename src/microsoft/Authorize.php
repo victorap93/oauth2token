@@ -13,20 +13,20 @@ class Authorize
         $this->client_id = $client_id;
     }
 
-    public function getCode($scope = ['.default'], $redirect_uri = 'http://localhost')
+    public function redirect($scope = ['.default'], $redirect_uri = 'http://localhost')
     {
-        $client = new \GuzzleHttp\Client();
-
-        $request = $client->get("https://login.microsoftonline.com/" . $this->tenant_id . "/oauth2/v2.0/authorize", [
-            'query' => [
-                'scope' => implode(" ", $scope),
-                'client_id' => $this->client_id,
-                'response_type' => 'code',
-                'redirect_uri' => $redirect_uri
-            ],
-            'allow_redirects' => true
+        $query = http_build_query([
+            'scope' => implode(" ", $scope),
+            'client_id' => $this->client_id,
+            'response_type' => 'code',
+            'redirect_uri' => $redirect_uri
         ]);
 
-        header("Location: " . $request->getEffectiveUrl());
+        header("Location: " . "https://login.microsoftonline.com/" . $this->tenant_id . "/oauth2/v2.0/authorize?" . $query);
+    }
+
+    public function getCode()
+    {
+        return $_GET['code'];
     }
 }

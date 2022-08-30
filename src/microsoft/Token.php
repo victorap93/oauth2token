@@ -2,7 +2,9 @@
 
 namespace victorap93\OAuth2Token\Microsoft;
 
-class Client
+use \GuzzleHttp\Client;
+
+class Token
 {
     private $tenant_id;
     private $client_id;
@@ -19,7 +21,7 @@ class Client
 
     public function getAccessToken($scope = ['.default'])
     {
-        $client = new \GuzzleHttp\Client();
+        $client = new Client();
 
         $request = $client->post("https://login.microsoftonline.com/" . $this->tenant_id . "/oauth2/v2.0/token", [
             'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
