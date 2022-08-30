@@ -1,13 +1,13 @@
 {
     "name": "victorap93/oauth2token",
-    "description": "",
+    "description": "This package is an easy way to use OAuth 2.0 Protocols to get authorization token",
     "keywords": [
         "Microsoft",
-        "Power BI Embedded",
         "token",
-        "OAuth 2.0"
+        "OAuth 2.0",
+        "Outlook"
     ],
-    "version": "0.1.1",
+    "version": "0.1.2",
     "license": "MIT",
     "require": {
         "php": ">=5.4",
@@ -24,10 +24,5 @@
             "email": "victorap93@gmail.com",
             "homepage": "https://github.com/victorap93"
         }
-    ],
-    "config": {
-        "platform": {
-            "php": "5.4"
-        }
-    }
+    ]
 }
