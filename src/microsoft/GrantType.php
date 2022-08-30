@@ -20,4 +20,13 @@ class GrantType
             'refresh_token' => $refresh_token
         ];
     }
+
+    public static function authorization_code($code, $redirect_uri)
+    {
+        return [
+            'grant_type' => 'authorization_code',
+            'code' => $code,
+            'redirect_uri' => $redirect_uri
+        ];
+    }
 }

@@ -17,7 +17,7 @@ class Client
         $this->grant_type = $grant_type;
     }
 
-    public function getToken($scope = ['.default'])
+    public function getAccessToken($scope = ['.default'])
     {
         $client = new \GuzzleHttp\Client();
 
