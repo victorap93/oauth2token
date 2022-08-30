@@ -25,7 +25,7 @@ class Authorize
         header("Location: " . "https://login.microsoftonline.com/" . $this->tenant_id . "/oauth2/v2.0/authorize?" . $query);
     }
 
-    public function getCode()
+    public static function getCode()
     {
         return $_GET['code'];
     }
